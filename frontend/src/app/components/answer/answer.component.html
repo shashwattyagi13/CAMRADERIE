@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12">
+        <mdb-card cascade="true" narrower="true">
+
+            <div class="view view-cascade  gradient-card-header purple-gradient text-center">
+                <h2 class="card-header-title" style="margin: 10px;">User Name</h2>
+                <div class="">
+                    <a mdbBtn floating="true" class="waves-light" mdbWavesEffect>
+                        <mdb-icon fab icon="facebook" size="2x" class="white-text mr-md-5 mr-3"></mdb-icon>
+                    </a>
+                    <a floating="true" class="waves-light" mdbWavesEffect>
+                        <mdb-icon fab icon="twitter" size="2x" class="white-text mr-md-5 mr-3"></mdb-icon>
+                    </a>
+                    <a floating="true" class="waves-light" mdbWavesEffect>
+                        <mdb-icon fab fab icon="google-plus" size="2x" class="white-text mr-md-5 mr-3"></mdb-icon>
+                    </a>
+                </div>
+            </div>
+
+            <mdb-card-body cascade="true" class="text-center">
+                <mdb-card-text>
+                    {{ question.title }}
+                </mdb-card-text>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+    <div class="col-lg-12 text-left">
+        <form name="form" (ngSubmit)="onSubmit()" #f="ngForm">
+            <div class="form-group">
+                <label for="answer">Answer</label>
+                <input type="text" class="form-control" name="content" [(ngModel)]="form.content" required
+                    #title="ngModel" />
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && content.invalid">
+                    Empty Answer Not Allowed.
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-primary">
+                    Submit
+                </button>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-lg-4 col-md-6" *ngFor="let answer of allAnswers?.reverse()" style="padding: 10px;">
+                <mdb-card cascade="true">
+                  <div class="view view-cascade gradient-card-header blue-gradient">
+                    <h2 class="card-header-title text-center" style="margin-top: 2px;">User Name</h2>
+                  </div>
+                  <mdb-card-body cascade="true" class="text-left">
+                    <mdb-card-text>
+                        {{ answer.content }}
+                    </mdb-card-text>
+                  </mdb-card-body>
+                </mdb-card>
+            </div>
+        </div>
+    </div>
+</div>

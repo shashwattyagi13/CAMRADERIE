@@ -1,0 +1,36 @@
+<div class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="searchTitle()">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6" [hidden]="!check">
+        <h4>Questions List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let question of questions; let i = index"
+                [class.active]="i == currentIndex" (click)="setActiveQuestion(question, i)">
+                {{ question.title }}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="currentQuestion">
+            <h4>Question</h4>
+            <div>
+                <label><strong>Content:</strong></label> {{ currentQuestion.title }}
+            </div>
+        </div>
+
+        <div *ngIf="!currentQuestion" [hidden]="!check">
+            <br />
+            <p>Please click on a Question...</p>
+        </div>
+    </div>
+</div>
+
+<app-footer class="foot"></app-footer>

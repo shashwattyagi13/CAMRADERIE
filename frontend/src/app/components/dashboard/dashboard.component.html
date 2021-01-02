@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col-lg-3 col-md-6">
+        <mdb-card cascade="true" wider="true">
+            <div class="view view-cascade gradient-card-header peach-gradient">
+                <h2 class="card-header-title mb-2">Thoughts Of the Day</h2>
+                <p class="">
+                    <mdb-icon far icon="calendar"></mdb-icon> {{ myDate }}
+                </p>
+            </div>
+            <mdb-card-body cascade="true" class="text-left">
+                <mdb-card-text>
+                    “When you talk, you are only repeating something you know. But if you listen, you may learn
+                    something
+                    new.” – Dalai Lama
+                </mdb-card-text>
+                <mdb-card-text>
+                    “When you know better, you do better.”- Maya Angelou
+                </mdb-card-text>
+                <mdb-card-text>
+                    “If you want to be more powerful in life, educate yourself. It’s that simple”
+                </mdb-card-text>
+                <mdb-card-text>
+                    “Learn as much as you can while you are young, since life becomes too busy later”- Dana Stewart
+                    Scott<br>
+                </mdb-card-text>
+                <mdb-card-text>
+                    “The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a
+                    choice.”- Brian Herbert
+                </mdb-card-text>
+                <mdb-card-text>
+                    “The more that you read, the more things you will know. The more you learn, the more places you’ll
+                    go!”-
+                    Dr Seuss
+                </mdb-card-text>
+                <mdb-card-text>
+                    “Logic will take you from A to B. Imagination will take you everywhere.”- Albert Einstein
+                </mdb-card-text>
+                <mdb-card-text>
+                    ‘The more you give away the happier you become.’
+                </mdb-card-text>
+                <mdb-card-text>
+                    “You’re braver than you believe and stronger than you seem, and smarter than you think.” –
+                    Christopher
+                    Robin
+                </mdb-card-text>
+                <mdb-card-text>
+                    “In any moment of decision, the best thing you can do is the right thing. The worst thing you can do
+                    is
+                    nothing.” – Theodore Roosevelt
+                </mdb-card-text>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+    <div class="col-lg-9 col-md-6 text-left">
+        <form name="form" (ngSubmit)="onSubmit()" #f="ngForm">
+            <div class="form-group">
+                <label for="question">Question</label>
+                <input type="text" class="form-control" name="title" [(ngModel)]="form.title" required
+                    #title="ngModel" />
+                <div class="alert alert-danger" role="alert" *ngIf="f.submitted && title.invalid">
+                    Empty Question Not Allowed.
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-primary">
+                    Submit
+                </button>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-lg-4 col-md-6" *ngFor="let question of allQuestions?.reverse()" style="padding: 10px;">
+                <mdb-card cascade="true">
+                  <div class="view view-cascade gradient-card-header blue-gradient">
+                    <h2 class="card-header-title text-center" style="margin-top: 2px;">User Name</h2>
+                  </div>
+                  <mdb-card-body cascade="true" class="text-left">
+                    <mdb-card-text>
+                        {{ question.title }}
+                    </mdb-card-text>
+                    <a style="color: white; background-color: indigo; padding: 5px;" [routerLink]="['/answer']" routerLinkActive="router-link-active" [state]="question"> Answer </a>
+                  </mdb-card-body>
+                </mdb-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="content">
+  <header>
+    <div class="container">
+      <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark fixed-top indigo scrolling-navbar">
+        <mdb-navbar-brand><a class="navbar-brand" [routerLink]="['/dashboard']"
+            routerLinkActive="router-link-active">CAMARADERIE</a></mdb-navbar-brand>
+        <links>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a routerLink="home" class="nav-link waves-light" mdbWavesEffect [hidden]="loggedUser">Home</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="dashboard" class="nav-link waves-light" mdbWavesEffect [hidden]="!loggedUser">Home</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="search" class="nav-link waves-light" mdbWavesEffect>Search</a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['/collection']" class="nav-link waves-light" mdbWavesEffect>Collection</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/login']"
+                routerLinkActive="router-link-active" [hidden]="loggedUser">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/register']"
+                routerLinkActive="router-link-active" [hidden]="loggedUser">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/profile']"
+                routerLinkActive="router-link-active" [hidden]="!loggedUser">Pofile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect [hidden]="!loggedUser" (click)="logout()">Logout</a>
+            </li>
+          </ul>
+        </links>
+      </mdb-navbar>
+    </div>
+  </header>
+  <router-outlet></router-outlet>
+
+</div>
